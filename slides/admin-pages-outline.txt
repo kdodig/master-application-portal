@@ -1,0 +1,71 @@
+Projektvorstellung: Admin Pages für Masterbewerbungen
+	Kontext: Übergabe vom manuellen Prozess zum System
+	Ziel: Digitalisierung und Standardisierung des Review-Prozesses
+	Agenda: Überblick, Workflows, Rollen, Export, Ausblick
+
+Ausgangssituation: Manueller Prozess
+	Verteilte Dokumente, Medienbrüche, inkonsistente Status
+	Hoher Koordinationsaufwand zwischen Beteiligten
+	Fehlende Auswertungen und Transparenz
+
+Ziele und Mehrwert
+	Einheitlicher Workflow mit klaren Rollen
+	Nachvollziehbarkeit und Datenqualität
+	Zeitersparnis durch Automatisierung und Exportfunktionen
+
+Systemüberblick
+	Frontend: Nuxt 3 (app/pages/admin/*)
+	Auth: Middleware (app/middleware/auth.ts)
+	APIs: server/api/admin/* (Bewerber, Review, Konten, Export)
+	Datenbank & Utilities (server/database/*, server/utils/*)
+
+Login und Zugriff
+	Login-Seite: /admin/login
+	Route-Schutz via Auth-Middleware
+	Temporäres Passwort erzwingt Passwortänderung
+
+Dashboard und Statistiken
+	KPIs: Gesamte Bewerbungen, Abschlussquote, Länderanzahl
+	Verteilung nach Review-Status (Donut)
+	Zeitverlauf der Bewerbungen (Area-Chart)
+
+Bewerberübersicht
+	Suche, Filter (Major, Review-Status), Sortierung
+	Pagination und Anzahl-Anzeige
+	Aktionen: Dokumente, Kurse, Personal Skills (Modals)
+
+Review: Dokumente
+	Pflichtdokumente mit Status (vorhanden/fehlt etc.)
+	Speichern, Fortfahren, Ablehnen (mit Bestätigung)
+	API: /api/admin/review/documents + /api/admin/applicants/{id}
+
+Review: Kursanalyse
+	Kursliste mit AI-Vorhersagen (Name, Credits, Fachgebiet)
+	Manuelle Korrektur und Validierung
+	PDF-Vorschau (Kursbeschreibungen/Transcript)
+
+Review: Personal Skills
+	Erfassung von Skills mit Punkten (bis 25)
+	Liste pflegen (hinzufügen/entfernen)
+
+Einstellungen: Accounts & Rollen
+	Benutzerliste mit Suche und Sortierung
+	Rollen anzeigen (admin, user, guest)
+	Anlegen, Bearbeiten, Aktivieren/Deaktivieren, Löschen
+
+Benutzer: Passwort ändern
+	Formular mit Validierung (Bestätigung erforderlich)
+	Session-Reset und Redirect zum Login
+
+Export & Berichte
+	CSV-Export der Bewerbungen (/api/admin/exportcsv)
+	Download-Button im Admin-Bereich
+
+Sicherheit & Datenschutz
+	Authentifizierung und Route-Gating
+	Rollenbasierter Zugriff auf Admin-Funktionen
+	Sichere Dateispeicherung (Objektspeicher)
+
+Ausblick
+	Audit-Logs, Benachrichtigungen, weitere KPIs
+	Feinere Rollen, erweiterte Filter und Suchen

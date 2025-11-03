@@ -1,0 +1,196 @@
+{
+  "id": "f3fae489-4692-4ce8-9c57-9e578d97bbb7",
+  "prevId": "8836f917-5397-457b-b765-5283f01563cd",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.applications": {
+      "name": "applications",
+      "schema": "",
+      "columns": {
+        "applicationId": {
+          "name": "applicationId",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "applicantNr": {
+          "name": "applicantNr",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "reviewed": {
+          "name": "reviewed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "firstName": {
+          "name": "firstName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "lastName": {
+          "name": "lastName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "bachelorUniversity": {
+          "name": "bachelorUniversity",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bachelorStudyProgram": {
+          "name": "bachelorStudyProgram",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "regularStudyYears": {
+          "name": "regularStudyYears",
+          "type": "numeric(4, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "usingEctsSystem": {
+          "name": "usingEctsSystem",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "totalCreditsUponCompletion": {
+          "name": "totalCreditsUponCompletion",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "submittedAt": {
+          "name": "submittedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "reviewedAt": {
+          "name": "reviewedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.courses": {
+      "name": "courses",
+      "schema": "",
+      "columns": {
+        "courseId": {
+          "name": "courseId",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "applicationId": {
+          "name": "applicationId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "predictedName": {
+          "name": "predictedName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "correctedName": {
+          "name": "correctedName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ects": {
+          "name": "ects",
+          "type": "numeric(10, 2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "subjectArea": {
+          "name": "subjectArea",
+          "type": "subject_area",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "predictedSubjectArea": {
+          "name": "predictedSubjectArea",
+          "type": "subject_area",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "correctedSubjectArea": {
+          "name": "correctedSubjectArea",
+          "type": "subject_area",
+          "typeSchema": "public",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {
+    "public.subject_area": {
+      "name": "subject_area",
+      "schema": "public",
+      "values": [
+        "Computer Science",
+        "Information Systems",
+        "Quantitative Methods",
+        "Business Administration",
+        "None"
+      ]
+    }
+  },
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

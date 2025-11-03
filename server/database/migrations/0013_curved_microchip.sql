@@ -1,0 +1,1 @@
+ALTER TABLE "applicants" DROP CONSTRAINT "applicants_applicant_number_unique";

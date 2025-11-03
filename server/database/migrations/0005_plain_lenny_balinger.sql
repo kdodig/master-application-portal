@@ -1,0 +1,1 @@
+ALTER TABLE "courses" ALTER COLUMN "applicationId" SET NOT NULL;
